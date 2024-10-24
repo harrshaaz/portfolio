@@ -305,56 +305,61 @@
                         </form>
                     </section>
                     
-                    <script>
-                    function validateForm(event) {
-                        event.preventDefault();
-                    
-                        const name = document.getElementById('name').value;
-                        const email = document.getElementById('email').value;
-                        const subject = document.getElementById('subject').value;
-                        const message = document.getElementById('message').value;
-                    
-                        let valid = true;
-                    
-                        if (!name) {
-                            document.getElementById('errorName').style.display = 'block';
-                            valid = false;
-                        } else {
-                            document.getElementById('errorName').style.display = 'none';
-                        }
-                    
-                        if (!email || !validateEmail(email)) {
-                            document.getElementById('errorEmail').style.display = 'block';
-                            valid = false;
-                        } else {
-                            document.getElementById('errorEmail').style.display = 'none';
-                        }
-                    
-                        if (!subject) {
-                            document.getElementById('errorSubject').style.display = 'block';
-                            valid = false;
-                        } else {
-                            document.getElementById('errorSubject').style.display = 'none';
-                        }
-                    
-                        if (!message) {
-                            document.getElementById('errorMessage').style.display = 'block';
-                            valid = false;
-                        } else {
-                            document.getElementById('errorMessage').style.display = 'none';
-                        }
-                    
-                        if (valid) {
-                            document.getElementById('successMessage').style.display = 'block';
-                            event.target.submit();
-                        }
-                    }
-                    
-                    function validateEmail(email) {
-                        const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-                        return re.test(email);
-                    }
-                    </script>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            let valid = true;
+
+            if (!name) {
+                document.getElementById('errorName').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('errorName').style.display = 'none';
+            }
+
+            if (!email || !validateEmail(email)) {
+                document.getElementById('errorEmail').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('errorEmail').style.display = 'none';
+            }
+
+            if (!subject) {
+                document.getElementById('errorSubject').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('errorSubject').style.display = 'none';
+            }
+
+            if (!message) {
+                document.getElementById('errorMessage').style.display = 'block';
+                valid = false;
+            } else {
+                document.getElementById('errorMessage').style.display = 'none';
+            }
+
+            if (valid) {
+                document.getElementById('successMessage').style.display = 'block';
+                event.target.reset();  // Clear the input fields after successful submission
+                setTimeout(() => {
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000);
+                event.target.submit();
+            }
+        }
+
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            return re.test(email);
+        }
+    </script>
+
                     
                     <!-- Contact End -->
 
